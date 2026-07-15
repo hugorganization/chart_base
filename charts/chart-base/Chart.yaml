@@ -7,5 +7,5 @@ type: application
 version: 0.1.0
 
 # NO gestionada por release-please: Helm la trata como independiente de la version
-# del chart (puedes cambiar el chart sin recompilar la app).
+# del chart (puedes cambiar el chart sin recompilar la app)
 appVersion: "1.0.0"
