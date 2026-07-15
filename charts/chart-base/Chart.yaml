@@ -4,7 +4,7 @@ description: Base chart with Deployment, Service, ConfigMaps and ExternalSecret
 type: application
 
 # generada automaticamente por release-please a partir de Conventional Commits.
-version: 0.1.0
+version: 0.2.0
 
 # NO gestionada por release-please: Helm la trata como independiente de la version
 # del chart (puedes cambiar el chart sin recompilar la app)
