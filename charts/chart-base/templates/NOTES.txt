@@ -1,0 +1,14 @@
+Chart {{ .Chart.Name }} desplegado como release "{{ .Release.Name }}".
+
+Para acceder a la aplicación:
+
+  kubectl --namespace {{ .Release.Namespace }} port-forward svc/{{ include "chart-base.fullname" . }} 8080:{{ .Values.service.port }}
+
+  Visita http://127.0.0.1:8080
+
+{{- if .Values.externalSecret.enabled }}
+
+Comprueba el estado del ExternalSecret (debe ser SecretSynced):
+
+  kubectl --namespace {{ .Release.Namespace }} get externalsecret {{ include "chart-base.fullname" . }}
+{{- end }}

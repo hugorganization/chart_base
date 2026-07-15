@@ -1,0 +1,12 @@
+{{- if .Values.config.env.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "chart-base.envConfigMapName" . }}
+  labels:
+    {{- include "chart-base.labels" . | nindent 4 }}
+data:
+  {{- range $key, $value := .Values.config.env.data }}
+  {{ $key }}: {{ $value | quote }}
+  {{- end }}
+{{- end }}

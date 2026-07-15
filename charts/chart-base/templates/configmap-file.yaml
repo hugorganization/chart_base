@@ -1,0 +1,11 @@
+{{- if .Values.config.file.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "chart-base.fileConfigMapName" . }}
+  labels:
+    {{- include "chart-base.labels" . | nindent 4 }}
+data:
+  {{ .Values.config.file.fileName }}: |
+    {{- tpl .Values.config.file.content . | nindent 4 }}
+{{- end }}

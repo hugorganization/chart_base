@@ -1,0 +1,66 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  # Normalmente se deja "" para heredar .Chart.AppVersion, pero el placeholder
+  # nginx no tiene un tag "1.0.0"; fija uno real hasta que pongas tu imagen.
+  tag: "latest"
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+service:
+  type: ClusterIP
+  port: 80
+  annotations: {}
+
+# nginx (imagen placeholder) escucha en el 80. Debe coincidir con el puerto real
+# que sirva tu contenedor, o el Service no encontrará la aplicación.
+containerPort: 80
+
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+config:
+  # ConfigMap #1 -> inyectado como variables de entorno (envFrom)
+  env:
+    enabled: true
+    data:
+      LOG_LEVEL: info
+      APP_MODE: production
+
+  # ConfigMap #2 -> montado como fichero en un volumen
+  file:
+    enabled: true
+    mountPath: /etc/app
+    fileName: app-config.yaml
+    content: |
+      server:
+        port: 8080
+      features:
+        metrics: true
+
+externalSecret:
+  enabled: false
+  refreshInterval: 1h
+  secretStoreRef:
+    name: ""            # obligatorio si enabled=true
+    kind: SecretStore   # o ClusterSecretStore
+  target:
+    name: ""            # vacío => nombre del release
+    creationPolicy: Owner
+    deletionPolicy: Retain
+    template: {}
+  data: []
+  dataFrom: []
