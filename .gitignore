@@ -4,6 +4,7 @@
 
 # Guía de andamiaje (no forma parte del chart)
 GUIA.md
+NOTES.txt
 
 # Artefactos Helm
 *.tgz
