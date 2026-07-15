@@ -1,0 +1,9 @@
+externalSecret:
+  enabled: true
+  secretStoreRef:
+    name: floci-secretsmanager
+  data:
+    - secretKey: DB_PASSWORD
+      remoteRef:
+        key: prod/app/db
+        property: password

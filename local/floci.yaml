@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: floci
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: floci }
+  template:
+    metadata:
+      labels: { app: floci }
+    spec:
+      # Evita que Kubernetes inyecte FLOCI_PORT=tcp://... (colisiona con la
+      # config Quarkus floci.port y hace crashear el pod).
+      enableServiceLinks: false
+      containers:
+        - name: floci
+          image: floci/floci:latest
+          ports:
+            - containerPort: 4566
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: floci
+spec:
+  selector: { app: floci }
+  ports:
+    - port: 4566
+      targetPort: 4566

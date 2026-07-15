@@ -1,0 +1,9 @@
+# IDE
+.idea/
+.vscode/
+
+# Guía de andamiaje (no forma parte del chart)
+GUIA.md
+
+# Artefactos Helm
+*.tgz
