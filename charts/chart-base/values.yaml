@@ -21,6 +21,7 @@ podAnnotations: {}
 service:
   type: ClusterIP
   port: 80
+  targetPort: 80
   annotations: {}
 
 # nginx (imagen placeholder) escucha en el 80. Debe coincidir con el puerto real
