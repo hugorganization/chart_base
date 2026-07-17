@@ -3,6 +3,16 @@ entries:
   chart-base:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2026-07-17T10:45:57.608504995Z"
+    description: Base chart with Deployment, Service, ConfigMaps and ExternalSecret
+    digest: 49ed4f673cc82cc792c0465def76697a3621d0170c45589d251d8d084bd1d2d6
+    name: chart-base
+    type: application
+    urls:
+    - https://github.com/hugorganization/chart_base/releases/download/chart-base-0.3.0/chart-base-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2026-07-15T10:15:42.724019788Z"
     description: Base chart with Deployment, Service, ConfigMaps and ExternalSecret
     digest: 33786c23cc5e13f64d03231cc48614b76d2ee60496ce4dcbda14e59b596a2234
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://github.com/hugorganization/chart_base/releases/download/chart-base-0.1.0/chart-base-0.1.0.tgz
     version: 0.1.0
-generated: "2026-07-15T10:15:42.724028774Z"
+generated: "2026-07-17T10:45:57.608518585Z"
